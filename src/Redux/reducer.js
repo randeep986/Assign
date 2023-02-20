@@ -1,33 +1,34 @@
-import React from 'react'
+
 import * as types from './actionType'
 
 const initialState={
-    getData:[],
-    isLoading: false,
+    movie:[],
+    isLoading:false,
     isError:false,
 }
- const reducer = (oldState=initialState,action) => {
-    const {type,payload}=action
-    switch(type){
+
+export const reducer =(oldState=initialState,action)=>{
+    const {type,payload}=action;
+    switch (type) {
         case types.GET_DATA_REQUEST:
-            return {
+            return{
                 ...oldState,
-                isLoading:true
+                isLoading:true,
             }
-        case types.GET_DATA_SUCCESS:
-            return {
+            case types.GET_DATA_SUCCESS:
+            return{
                 ...oldState,
                 isLoading:false,
-                getData:payload,
+                movie:payload
             }
-        case types.GET_DATA_FAILURE:
-            return {
+            case types.GET_DATA_FAILURE:
+            return{
                 ...oldState,
-                isLoading:false,
                 isError:true,
-                
+                isLoading:false,
             }
+
+        default:
+            return oldState;
     }
 }
-
-export default reducer
