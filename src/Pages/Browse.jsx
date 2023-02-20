@@ -7,15 +7,20 @@ const Browse = () => {
 const dispatch=useDispatch()
 const movie=useSelector((store)=>store.movie)
 
-console.log(movie)
+console.log("hola", movie)
 useEffect(()=>{
   dispatch(getMovieRecord)
 },[])
   return (
     <>
-    {/* {getData.map((movie)=>(
-      <div>{movie.title}</div>
-    ))} */}
+    {
+      movie.results.map((movie)=>(
+        <div key={movie.id}>
+          {movie.id}
+          <div>{movie.title}</div>
+        </div>
+      ))
+    }
     </>
   )
 }
